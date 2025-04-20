@@ -7,6 +7,7 @@ public class commit {
     int lou;
     int p;
 
+
     public int getF() {
 
         return i;
