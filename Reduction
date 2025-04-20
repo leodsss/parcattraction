@@ -1,0 +1,23 @@
+package modele;
+
+public class Reduction {
+    private int id;
+    private String nom;
+    private String type;
+    private double valeur;
+    private String condition;
+    private boolean actif;
+
+    public Reduction() {}
+
+    public Reduction(int id, String nom, String type, double valeur, String condition, boolean actif) {
+        this.id = id;
+        this.nom = nom;
+        this.type = type;
+        this.valeur = valeur;
+        this.condition = condition;
+        this.actif = actif;
+    }
+
+    // Getters / Setters
+}
