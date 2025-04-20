@@ -10,6 +10,6 @@ public class commit {
 
     public int getF() {
 
-        return j;
+        return uirk;
     }
 }
