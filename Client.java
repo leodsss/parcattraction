@@ -24,4 +24,7 @@ public class Client {
 
     // Getters / Setters
     // ------------------------------------------------
+    public int getId() {
+        return id;
+    }
 }
