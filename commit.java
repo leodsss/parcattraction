@@ -6,6 +6,7 @@ public class commit {
     int f;
     int lou;
     int p;
+    int uirk;
 
     public int getF() {
 
