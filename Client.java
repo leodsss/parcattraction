@@ -25,7 +25,7 @@ public class Client {
     // Getters / Setters
     // ------------------------------------------------
     public int getId() {
-        return this.typeClient;
+        return this.pontsFidelite;
 
     }
     public void setId(int id) {}
