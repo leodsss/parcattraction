@@ -25,7 +25,7 @@ public class Client {
     // Getters / Setters
     // ------------------------------------------------
     public int getId() {
-        return this.id;
+        return this.nom;
 
     }
     public void setId(int id) {}
