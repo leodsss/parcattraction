@@ -24,4 +24,9 @@ public class Client {
 
     // Getters / Setters
     // (à générer automatiquement dans ton IDE)
+
+    public int getId() {
+        return id;
+
+    }
 }
