@@ -6,4 +6,8 @@ public class commit {
     int f;
     int lou;
     int p;
+
+    public int getF() {
+        return f;
+    }
 }
