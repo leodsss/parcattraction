@@ -7,9 +7,7 @@ public class commit {
     int lou;
     int p;
     int uirk;
-
-    public int getF() {
-
-        return uirk;
-    }
+     public commit(int i, int j, int f, int lou, int p, int uirk) {
+         this.i = i;
+     }
 }
