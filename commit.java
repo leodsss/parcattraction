@@ -9,5 +9,6 @@ public class commit {
     int uirk;
      public commit(int i, int j, int f, int lou, int p, int uirk) {
          this.i = i;
+         this.j = j;
      }
 }
