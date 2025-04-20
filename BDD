@@ -1,0 +1,49 @@
+-- 1. Création de la base
+CREATE DATABASE IF NOT EXISTS parc_attractions DEFAULT CHARACTER SET utf8mb4;
+USE parc_attractions;
+
+-- 2. Table Client
+CREATE TABLE Client (
+    id_client INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    date_naissance DATE NOT NULL,
+    type_client ENUM('invite', 'membre', 'admin') DEFAULT 'invite',
+    points_fidelite INT DEFAULT 0
+);
+
+-- 3. Table Attraction
+CREATE TABLE Attraction (
+    id_attraction INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) UNIQUE NOT NULL,
+    type VARCHAR(50),
+    prix DOUBLE NOT NULL,
+    description TEXT,
+    actif BOOLEAN DEFAULT TRUE
+);
+
+-- 4. Table Reduction
+CREATE TABLE Reduction (
+    id_reduction INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    type ENUM('age', 'fidelite', 'promo_speciale') NOT NULL,
+    valeur DOUBLE NOT NULL,
+    condition_reduction VARCHAR(255),
+    actif BOOLEAN DEFAULT TRUE
+);
+
+-- 5. Table Reservation
+CREATE TABLE Reservation (
+    id_reservation INT AUTO_INCREMENT PRIMARY KEY,
+    id_client INT,
+    id_attraction INT,
+    date_reservation DATE NOT NULL,
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    prix_total DOUBLE NOT NULL,
+    id_reduction_appliquee INT DEFAULT NULL,
+    
+    FOREIGN KEY (id_client) REFERENCES Client(id_client) ON DELETE CASCADE,
+    FOREIGN KEY (id_attraction) REFERENCES Attraction(id_attraction) ON DELETE CASCADE,
+    FOREIGN KEY (id_reduction_appliquee) REFERENCES Reduction(id_reduction)
+);
