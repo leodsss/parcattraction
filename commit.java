@@ -9,7 +9,6 @@ public class commit {
 
     public int getF() {
 
-
         return i;
     }
 }
