@@ -23,5 +23,5 @@ public class Client {
     }
 
     // Getters / Setters
-    // (à générer automatiquement dans ton IDE)
+    //
 }
