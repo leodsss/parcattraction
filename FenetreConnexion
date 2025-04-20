@@ -1,0 +1,84 @@
+package vue;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class FenetreConnexion extends JFrame {
+
+    private JTextField emailField;
+    private JPasswordField passwordField;
+    private JButton btnConnexion, btnRetour;
+    private JLabel labelErreur;
+
+    public FenetreConnexion() {
+        setTitle("Connexion");
+        setSize(350, 220);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Panel central (formulaire)
+        JPanel panelForm = new JPanel(new GridLayout(3, 2, 10, 10));
+        panelForm.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+
+        panelForm.add(new JLabel("Email :"));
+        emailField = new JTextField();
+        panelForm.add(emailField);
+
+        panelForm.add(new JLabel("Mot de passe :"));
+        passwordField = new JPasswordField();
+        panelForm.add(passwordField);
+
+        labelErreur = new JLabel("");
+        labelErreur.setForeground(Color.RED);
+        panelForm.add(labelErreur);
+
+        btnConnexion = new JButton("Connexion");
+        panelForm.add(btnConnexion);
+
+        add(panelForm, BorderLayout.CENTER);
+
+        // Bouton retour
+        btnRetour = new JButton("Retour à l'accueil");
+        add(btnRetour, BorderLayout.SOUTH);
+
+        // Action bouton
+        btnConnexion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                seConnecter();
+            }
+        });
+
+        btnRetour.addActionListener(e -> {
+            new FenetreAccueil().setVisible(true);
+            dispose();
+        });
+    }
+
+    private void seConnecter() {
+        String email = emailField.getText();
+        String motDePasse = new String(passwordField.getPassword());
+
+        if (email.isEmpty() || motDePasse.isEmpty()) {
+            labelErreur.setText("Veuillez remplir tous les champs.");
+        } else {
+            // TODO : Connexion réelle via ClientDAO
+            if (email.equals("admin@admin.com") && motDePasse.equals("admin")) {
+                JOptionPane.showMessageDialog(this, "Connexion admin réussie !");
+                dispose(); // Fermer la fenêtre
+            } else {
+                labelErreur.setText("Email ou mot de passe invalide.");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            FenetreConnexion fenetre = new FenetreConnexion();
+            fenetre.setVisible(true);
+        });
+    }
+}
